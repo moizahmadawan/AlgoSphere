@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #101114;
+  color: #F4F4F5;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(183, 243, 107, 0.3);
+  color: #F4F4F5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1C20;
+}
+::-webkit-scrollbar-thumb {
+  background: #303238;
+  border-radius: 8px;
+  border: 2px solid #1A1C20;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3d44;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-ink-border bg-ink-panel;
+  }
+  .panel-raised {
+    @apply rounded-2xl border border-ink-border bg-ink-raised;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-lime/40 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-lime text-ink-base hover:bg-lime-soft shadow-glow;
+  }
+  .btn-ghost {
+    @apply btn bg-ink-raised text-content-primary border border-ink-border hover:border-ink-muted hover:bg-ink-muted/40;
+  }
+  .btn-subtle {
+    @apply btn text-content-secondary hover:text-content-primary hover:bg-ink-raised;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-border bg-ink-raised px-2.5 py-1 text-xs font-medium text-content-secondary;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-border bg-ink-base px-3 py-2 text-sm text-content-primary placeholder:text-content-faint focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/30 transition-colors;
+  }
+  .label {
+    @apply text-xs font-medium uppercase tracking-wider text-content-secondary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
